@@ -72,6 +72,8 @@ sim_co2_vaqao <- function(id_dispositivo){
     df$TVOC <- as.numeric(df$TVOC)
     df$Temperatura <- as.numeric(df$Temperatura)
     df$Humedad <- as.numeric(df$Humedad)
+    df <- df[order(df$ts,decreasing = TRUE),]
+    df <- df[1,]
     # Simulación datos
     # Suma o resta
     if(round(runif(1, min=0, max=1)) == 1){  # Suma
@@ -87,6 +89,7 @@ sim_co2_vaqao <- function(id_dispositivo){
     }
   }
   df$ts <- fecha_final
+
 
   # Envío a plataforma
   json_envio_plataforma <- paste('{"CO2":', df$CO2,',',
