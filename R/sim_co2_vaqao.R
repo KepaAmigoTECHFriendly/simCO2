@@ -110,6 +110,8 @@ sim_co2_vaqao <- function(id_dispositivo){
                      verify= FALSE,
                      encode = "json",verbose()
   )
+
+  return(1)
 }
 
 
